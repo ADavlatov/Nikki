@@ -5,4 +5,18 @@ option csharp_namespace = "Nikki.Auth";
 package auth;
 
 service Auth {
+  rpc SignInUser (SignInRequest) returns (SignInResponse);
+}
+
+message SignInRequest {
+  string username = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message SignInResponse {
+  bool isSucceed = 1;
+  string accessToken = 2;
+  string refreshToken = 3;
+  string error = 4;
 }
