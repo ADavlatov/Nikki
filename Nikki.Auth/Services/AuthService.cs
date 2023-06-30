@@ -4,7 +4,7 @@ using Nikki.Auth.Models;
 
 namespace Nikki.Auth.Services;
 
-public class AuthService
+public class AuthService : Auth.AuthBase
 {
     private readonly UserContext _db = new();
 
