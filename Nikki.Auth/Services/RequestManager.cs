@@ -1,3 +1,4 @@
+using System.IdentityModel.Tokens.Jwt;
 using Nikki.Auth.Models;
 
 namespace Nikki.Auth.Services;
@@ -21,6 +22,18 @@ public class RequestManager
     {
         User? user = db.Users.FirstOrDefault(x =>
             (x.Username == request.Username || x.Email == request.Username) && x.Password == request.Password);
+        return null;
+    }
+    
+    public static string? ValidateToken(UserContext db, string token)
+    {
+        JwtSecurityToken jwt = new JwtSecurityToken(token);
+
+        if (db.Users.FirstOrDefault(x => x.Username == jwt.Claims.First().Value) == null)
+        {
+            return "Неверный access token";
+        }
+
         return null;
     }
 }

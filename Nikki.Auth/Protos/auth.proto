@@ -7,6 +7,7 @@ package auth;
 service Auth {
   rpc SignInUser (SignInRequest) returns (SignInResponse);
   rpc LogInUser (LogInRequest) returns (LogInResponse);
+  rpc ValidateToken (TokenValidationRequest) returns (TokenValidationResponse);
 }
 
 message SignInRequest {
@@ -32,4 +33,13 @@ message LogInResponse {
   string accessToken = 2;
   string refreshToken = 3;
   string error = 4;
+}
+
+message TokenValidationRequest {
+  string accessToken = 1;
+}
+
+message TokenValidationResponse {
+  bool isValid = 1;
+  string error = 2;
 }

@@ -48,4 +48,17 @@ public class AuthService
             RefreshToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 15))
         });
     }
+    
+    public override Task<TokenValidationResponse> ValidateToken(TokenValidationRequest request,
+        ServerCallContext context)
+    {
+        var result = RequestManager.ValidateToken(_db, request.AccessToken);
+
+        if (result != null)
+        {
+            return Task.FromResult(new TokenValidationResponse { IsValid = false, Error = result});
+        }
+
+        return Task.FromResult(new TokenValidationResponse { IsValid = true });
+    }
 }
