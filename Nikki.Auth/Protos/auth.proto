@@ -6,6 +6,7 @@ package auth;
 
 service Auth {
   rpc SignInUser (SignInRequest) returns (SignInResponse);
+  rpc LogInUser (LogInRequest) returns (LogInResponse);
 }
 
 message SignInRequest {
@@ -15,6 +16,18 @@ message SignInRequest {
 }
 
 message SignInResponse {
+  bool isSucceed = 1;
+  string accessToken = 2;
+  string refreshToken = 3;
+  string error = 4;
+}
+
+message LogInRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LogInResponse {
   bool isSucceed = 1;
   string accessToken = 2;
   string refreshToken = 3;

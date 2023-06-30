@@ -16,4 +16,11 @@ public class RequestManager
 
         return null;
     }
+    
+    public static string? ValidateLogInRequest(UserContext db, LogInRequest request)
+    {
+        User? user = db.Users.FirstOrDefault(x =>
+            (x.Username == request.Username || x.Email == request.Username) && x.Password == request.Password);
+        return null;
+    }
 }

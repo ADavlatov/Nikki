@@ -31,4 +31,21 @@ public class AuthService
                 new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 15))
         });
     }
+    
+    public override Task<LogInResponse> LogInUser(LogInRequest request, ServerCallContext context)
+    {
+        var result = RequestManager.ValidateLogInRequest(_db, request);
+
+        if (result != null)
+        {
+            return Task.FromResult(new LogInResponse { IsSucceed = false, Error = result});
+        }
+
+        return Task.FromResult(new LogInResponse
+        {
+            IsSucceed = true,
+            AccessToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 1)),
+            RefreshToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 15))
+        });
+    }
 }
