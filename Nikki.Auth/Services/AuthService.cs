@@ -61,4 +61,24 @@ public class AuthService
 
         return Task.FromResult(new TokenValidationResponse { IsValid = true });
     }
+    
+    public override Task<AccessTokenResponse> GetAccessToken(AccessTokenRequest request, ServerCallContext context)
+    {
+        var result = RequestManager.ValidateToken(_db, request.RefreshToken);
+
+        if (result != null)
+        {
+            return Task.FromResult(new AccessTokenResponse { IsValid = false, Error = result });
+        }
+
+        JwtSecurityToken jwt = new JwtSecurityToken(request.RefreshToken);
+
+        return Task.FromResult(new AccessTokenResponse
+        {
+            IsValid = true,
+            AccessToken =
+                new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(jwt.Claims.First().Value, 1)),
+            RefreshToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(jwt.Claims.First().Value, 15))
+        });
+    }
 }
