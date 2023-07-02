@@ -36,11 +36,11 @@ public class AuthService : Auth.AuthBase
     
     public override Task<LogInResponse> LogInUser(LogInRequest request, ServerCallContext context)
     {
-        var result = RequestManager.ValidateLogInRequest(_db, request);
+        LogInValidator logInValidator = new LogInValidator();
 
-        if (result != null)
+        if (!logInValidator.Validate(request).IsValid)
         {
-            return Task.FromResult(new LogInResponse { IsSucceed = false, Error = result});
+            return Task.FromResult(new LogInResponse { IsSucceed = false, Error = "Неверный логин или пароль"});
         }
 
         return Task.FromResult(new LogInResponse
