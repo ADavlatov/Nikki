@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using Grpc.Core;
 using Nikki.Auth.Models;
+using Nikki.Auth.Services.Validators;
 
 namespace Nikki.Auth.Services;
 
@@ -10,17 +11,18 @@ public class AuthService : Auth.AuthBase
 
     public override Task<SignInResponse> SignInUser(SignInRequest request, ServerCallContext context)
     {
-        var result = RequestManager.ValidateSignInRequest(_db, request);
-
-        if (result != null)
-        {
-            return Task.FromResult(new SignInResponse { IsSucceed = false, Error = result });
-        }
-
-        _db.Users.Add(new User
+        SignInValidator signInValidator = new SignInValidator();
+        var user = new User
         {
             Username = request.Username, Email = request.Email, Password = request.Password
-        });
+        };
+
+        if (!signInValidator.Validate(user).IsValid)
+        {
+            return Task.FromResult(new SignInResponse { IsSucceed = false, Error = string.Join(", ", signInValidator.Validate(user).Errors) }); 
+        }
+
+        _db.Users.Add(user);
         _db.SaveChanges();
 
         return Task.FromResult(new SignInResponse

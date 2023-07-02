@@ -5,26 +5,13 @@ namespace Nikki.Auth.Services;
 
 public class RequestManager
 {
-    public static string? ValidateSignInRequest(UserContext db, SignInRequest request)
-    {
-        User? user = db.Users.FirstOrDefault(x =>
-            (x.Username == request.Username || x.Email == request.Username));
-
-        if (user != null)
-        {
-            return "Пользователь с таким именем или почтой уже существует";
-        }
-
-        return null;
-    }
-    
     public static string? ValidateLogInRequest(UserContext db, LogInRequest request)
     {
         User? user = db.Users.FirstOrDefault(x =>
             (x.Username == request.Username || x.Email == request.Username) && x.Password == request.Password);
         return null;
     }
-    
+
     public static string? ValidateToken(UserContext db, string token)
     {
         JwtSecurityToken jwt = new JwtSecurityToken(token);
