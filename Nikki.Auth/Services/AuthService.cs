@@ -12,17 +12,17 @@ public class AuthService : Auth.AuthBase
     public override Task<SignInResponse> SignInUser(SignInRequest request, ServerCallContext context)
     {
         SignInValidator signInValidator = new SignInValidator();
-        var user = new User
-        {
-            Username = request.Username, Email = request.Email, Password = request.Password
-        };
+        var validateResult = signInValidator.Validate(request);
 
-        if (!signInValidator.Validate(user).IsValid)
+        if (!validateResult.IsValid)
         {
-            return Task.FromResult(new SignInResponse { IsSucceed = false, Error = string.Join(", ", signInValidator.Validate(user).Errors) }); 
+            return Task.FromResult(new SignInResponse { IsSucceed = false, Error = string.Join(", ", validateResult.Errors) }); 
         }
 
-        _db.Users.Add(user);
+        _db.Users.Add(new User
+        {
+            Username = request.Username, Email = request.Email, Password = request.Password
+        });
         _db.SaveChanges();
 
         return Task.FromResult(new SignInResponse
