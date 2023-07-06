@@ -10,8 +10,7 @@ public class SignInValidator : AbstractValidator<SignInRequest>
 
     public SignInValidator()
     {
-        RuleFor(x => x.Username).Must(x => x.All(char.IsLetter) || x.All(char.IsNumber))
-            .WithMessage("Имя пользователя должно состоять только из букв и цифр.")
+        RuleFor(x => x.Username)
             .Must(x => !_db.Users.Any(y => y.Username == x))
             .WithMessage("Пользователь с таким именем уже существует.").MinimumLength(4)
             .WithMessage("Имя пользователя должно состоять минимум из 4 символов").MaximumLength(16)
