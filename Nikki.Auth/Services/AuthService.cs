@@ -12,11 +12,12 @@ public class AuthService : Auth.AuthBase
     public override Task<SignInResponse> SignInUser(SignInRequest request, ServerCallContext context)
     {
         SignInValidator signInValidator = new SignInValidator();
-        var validateResult = signInValidator.Validate(request);
+        var validationResult = signInValidator.Validate(request);
 
-        if (!validateResult.IsValid)
+        if (!validationResult.IsValid)
         {
-            return Task.FromResult(new SignInResponse { IsSucceed = false, Error = string.Join(", ", validateResult.Errors) }); 
+            return Task.FromResult(new SignInResponse
+                { IsSucceed = false, Error = string.Join(", ", validationResult.Errors) });
         }
 
         _db.Users.Add(new User
@@ -33,14 +34,16 @@ public class AuthService : Auth.AuthBase
                 new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 15))
         });
     }
-    
+
     public override Task<LogInResponse> LogInUser(LogInRequest request, ServerCallContext context)
     {
         LogInValidator logInValidator = new LogInValidator();
+        var validationResult = logInValidator.Validate(request);
 
-        if (!logInValidator.Validate(request).IsValid)
+        if (!validationResult.IsValid)
         {
-            return Task.FromResult(new LogInResponse { IsSucceed = false, Error = "Неверный логин или пароль"});
+            return Task.FromResult(new LogInResponse
+                { IsSucceed = false, Error = string.Join(", ", validationResult.Errors) });
         }
 
         return Task.FromResult(new LogInResponse
@@ -50,27 +53,31 @@ public class AuthService : Auth.AuthBase
             RefreshToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 15))
         });
     }
-    
+
     public override Task<TokenValidationResponse> ValidateToken(TokenValidationRequest request,
         ServerCallContext context)
     {
-        var result = RequestManager.ValidateToken(_db, request.AccessToken);
+        AccessTokenValidator accessTokenValidator = new AccessTokenValidator();
+        var validationResult = accessTokenValidator.Validate(request);
 
-        if (result != null)
+        if (validationResult.IsValid)
         {
-            return Task.FromResult(new TokenValidationResponse { IsValid = false, Error = result});
+            return Task.FromResult(new TokenValidationResponse
+                { IsValid = false, Error = string.Join(", ", validationResult.Errors) });
         }
 
         return Task.FromResult(new TokenValidationResponse { IsValid = true });
     }
-    
+
     public override Task<AccessTokenResponse> GetAccessToken(AccessTokenRequest request, ServerCallContext context)
     {
-        var result = RequestManager.ValidateToken(_db, request.RefreshToken);
+        RefreshTokenValidator refreshTokenValidator = new RefreshTokenValidator();
+        var validationResult = refreshTokenValidator.Validate(request);
 
-        if (result != null)
+        if (validationResult.IsValid)
         {
-            return Task.FromResult(new AccessTokenResponse { IsValid = false, Error = result });
+            return Task.FromResult(new AccessTokenResponse
+                { IsValid = false, Error = string.Join(", ", validationResult.Errors) });
         }
 
         JwtSecurityToken jwt = new JwtSecurityToken(request.RefreshToken);
@@ -80,7 +87,8 @@ public class AuthService : Auth.AuthBase
             IsValid = true,
             AccessToken =
                 new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(jwt.Claims.First().Value, 1)),
-            RefreshToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(jwt.Claims.First().Value, 15))
+            RefreshToken =
+                new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(jwt.Claims.First().Value, 15))
         });
     }
 }
