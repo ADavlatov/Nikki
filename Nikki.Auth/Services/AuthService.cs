@@ -50,7 +50,7 @@ public class AuthService : Auth.AuthBase
         {
             IsSucceed = true,
             AccessToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 1)),
-            RefreshToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 15))
+            RefreshToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 4320))
         });
     }
 

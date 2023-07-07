@@ -14,7 +14,7 @@ public class TokenService
             audience: AuthOptions.Audience,
             claims: GetClaims(username)
                 .Claims,
-            expires: DateTime.UtcNow.Add(TimeSpan.FromDays(lifetime)),
+            expires: DateTime.UtcNow.Add(TimeSpan.FromHours(lifetime)),
             signingCredentials: new(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
     }
 
