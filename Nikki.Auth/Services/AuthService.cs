@@ -60,7 +60,7 @@ public class AuthService : Auth.AuthBase
         AccessTokenValidator accessTokenValidator = new AccessTokenValidator();
         var validationResult = accessTokenValidator.Validate(request);
 
-        if (validationResult.IsValid)
+        if (!validationResult.IsValid)
         {
             return Task.FromResult(new TokenValidationResponse
                 { IsValid = false, Error = string.Join(", ", validationResult.Errors) });
@@ -74,7 +74,7 @@ public class AuthService : Auth.AuthBase
         RefreshTokenValidator refreshTokenValidator = new RefreshTokenValidator();
         var validationResult = refreshTokenValidator.Validate(request);
 
-        if (validationResult.IsValid)
+        if (!validationResult.IsValid)
         {
             return Task.FromResult(new AccessTokenResponse
                 { IsValid = false, Error = string.Join(", ", validationResult.Errors) });
