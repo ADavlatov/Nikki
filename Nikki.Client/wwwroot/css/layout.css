@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: sans-serif;
+}
+a{
+    text-decoration: unset;
+    color: black;
+}
+a:hover{
+    color: gray;
+}
+.container{
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.header{
+    height: 74px;
+    border-bottom: solid 1px #000000;
+}
+.header_content{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+}
+.header_logo{
+    font-size: 48px;
+    font-weight: bold;
+    width: 270px;
+    text-align: center;
+    line-height: 74px;
+}
+.header_navigation{
+    font-size: 24px;
+    width: 460px;
+    line-height: 74px;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-self: right;
+}

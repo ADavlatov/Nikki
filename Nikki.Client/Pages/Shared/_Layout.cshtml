@@ -2,9 +2,32 @@
 <html>
 <head>
     <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="/css/layout.css" />
 </head>
 <body>
-<header></header>
+<div class="header">
+    <div class="container">
+        <div class="header_content">
+            <p class="header_logo">
+                Nikki
+            </p>
+            <div class="header_navigation">
+                <a href="#" class="header_navigation-about">
+                    About
+                </a>
+                <a href="#" class="header_navigation-contacts">
+                    Contacts
+                </a>
+                <a href="#" class="header_navigation-signin">
+                    Sign In
+                </a>
+                <a href="#" class="header_navigation-login">
+                    Log In
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 @RenderBody()
 <footer></footer>
 </body>
