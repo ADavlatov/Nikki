@@ -38,11 +38,7 @@ input{
     display: grid;
     font-size: 24px;
 }
-.login_form-username{
-    margin-bottom: 42px;
-    margin-left: 25px;
-}
-.login_form-password{
+.login_form-item{
     margin-bottom: 42px;
     margin-left: 25px;
 }
