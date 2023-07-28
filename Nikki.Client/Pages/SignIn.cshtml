@@ -1,0 +1,48 @@
+@page
+@model Nikki.Client.Pages.SignIn
+
+@{
+    Layout = "Shared/_Layout";
+    ViewBag.IsAuth = false;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Sign In</title>
+    <link rel="stylesheet" href="/css/signIn.css"/>
+</head>
+<body>
+<div class="login">
+    <div class="container">
+        <div class="login_content">
+            <p class="login_title">Log In</p>
+            <form class="login_form" method="post">
+                <div class="login_form-item">
+                    <a>Enter your username:</a>
+                    <label>
+                        <input name="login" type="text">
+                    </label>
+                </div>
+                <div class="login_form-item">
+                    <a>Enter your email:</a>
+                    <label>
+                        <input name="login" type="text">
+                    </label>
+                </div>
+                <div class="login_form-item">
+                    <a>Enter your password:</a>
+                    <label>
+                        <input name="password" type="password">
+                    </label>
+                </div>
+                <button class="login_form-btn" type="submit">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
