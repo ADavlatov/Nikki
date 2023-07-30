@@ -17,7 +17,14 @@ public class AuthService : Auth.AuthBase
         if (!validationResult.IsValid)
         {
             return Task.FromResult(new SignInResponse
-                { IsSucceed = false, Error = string.Join(", ", validationResult.Errors) });
+            {
+                IsSucceed = false,
+                UsernameError = string.Join(", ",
+                    validationResult.Errors.Where(x => x.ErrorMessage.Contains("username"))),
+                EmailError = string.Join(", ", validationResult.Errors.Where(x => x.ErrorMessage.Contains("email"))),
+                PasswordError = string.Join(", ",
+                    validationResult.Errors.Where(x => x.ErrorMessage.Contains("password")))
+            });
         }
 
         _db.Users.Add(new User
@@ -43,7 +50,13 @@ public class AuthService : Auth.AuthBase
         if (!validationResult.IsValid)
         {
             return Task.FromResult(new LogInResponse
-                { IsSucceed = false, Error = string.Join(", ", validationResult.Errors) });
+            {
+                IsSucceed = false,
+                UsernameError = string.Join(",",
+                    validationResult.Errors.Where(x => x.ErrorMessage.Contains("username"))),
+                PasswordError = string.Join(",",
+                    validationResult.Errors.Where(x => x.ErrorMessage.Contains("password")))
+            });
         }
 
         return Task.FromResult(new LogInResponse
