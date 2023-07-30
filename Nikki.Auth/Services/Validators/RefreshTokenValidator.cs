@@ -9,6 +9,6 @@ public class RefreshTokenValidator : AbstractValidator<AccessTokenRequest>
     {
         JwtSecurityTokenHandler jwt = new JwtSecurityTokenHandler();
         RuleFor(x => x.RefreshToken).Must(x => jwt.CanReadToken(x))
-            .WithMessage("Невозможно прочитать токен").NotEmpty().WithMessage("Поле не может быть пустым");
+            .WithMessage("The token cannot be read").NotEmpty().WithMessage("The field cannot be empty");
     }
 }

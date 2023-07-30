@@ -12,8 +12,10 @@ public class LogInValidator : AbstractValidator<LogInRequest>
         RuleFor(x => x)
             .Must(x => _db.Users.FirstOrDefault(y =>
                 (y.Username == x.Username || y.Email == x.Username) && y.Password == x.Password) != null)
-            .WithMessage("Неверный логин или пароль").NotEmpty().WithMessage("Это поле обязательно для заполнения");
-        RuleFor(x => x.Username).NotEmpty().WithMessage("Это поле обязательно для заполнения");
-        RuleFor(x => x.Password).NotEmpty().WithMessage("Это поле обязательно для заполнения");
+            .WithMessage("Invalid username or password");
+        RuleFor(x => x.Username).MinimumLength(4)
+            .WithMessage("The username or email must consist of at least 4 characters").MaximumLength(30).NotEmpty()
+            .WithMessage("Enter your username or email");
+        RuleFor(x => x.Password).NotEmpty().WithMessage("Enter the password");
     }
 }

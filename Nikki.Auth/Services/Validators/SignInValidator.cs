@@ -12,18 +12,18 @@ public class SignInValidator : AbstractValidator<SignInRequest>
     {
         RuleFor(x => x.Username)
             .Must(x => !_db.Users.Any(y => y.Username == x))
-            .WithMessage("Пользователь с таким именем уже существует.").MinimumLength(4)
-            .WithMessage("Имя пользователя должно состоять минимум из 4 символов").MaximumLength(16)
-            .WithMessage("Имя пользователя не должно превышать длину в 16 символов.").NotEmpty()
-            .WithMessage("Введите имя пользователяю.");
+            .WithMessage("This username already exists").MinimumLength(4)
+            .WithMessage("The username must consist of at least 4 characters").MaximumLength(16)
+            .WithMessage("The username must not exceed 16 characters in length").NotEmpty()
+            .WithMessage("Enter the username");
         RuleFor(x => x.Password).Must(x => x.All(char.IsLetter) || x.All(char.IsNumber))
-            .WithMessage("Пароль должен состоять только из букв и цифр.").MinimumLength(5)
-            .WithMessage("Пароль должен состоять минимум из 5 символов").MaximumLength(30)
-            .WithMessage("Пароль не должен превышать длину в 16 символов.").NotEmpty()
-            .WithMessage("Введите пароль.");
+            .WithMessage("The password must consist only of letters and numbers").MinimumLength(5)
+            .WithMessage("The password must consist of at least 5 characters").MaximumLength(30)
+            .WithMessage("The password must not exceed 16 characters in length").NotEmpty()
+            .WithMessage("Enter the password");
         RuleFor(x => x.Email).Must(x => !_db.Users.Any(y => y.Email == x))
-            .WithMessage("Пользователь с таким адресом электронной почты уже существует.").NotEmpty()
+            .WithMessage("A user with this email address already exists").NotEmpty()
             .EmailAddress(mode: EmailValidationMode.AspNetCoreCompatible)
-            .WithMessage("Ошибка при вводе электронной почты.");
+            .WithMessage("Error when entering email");
     }
 }
