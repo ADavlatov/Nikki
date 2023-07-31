@@ -18,35 +18,39 @@ input{
     max-width: 1440px;
     margin: 0 auto;
 }
-.login{
+.log{
     display: grid;
     margin-top: 150px;
 }
-.login_content{
+.log_content{
     grid-template-rows: repeat(5, auto);
-    height: 510px;
     width: 500px;
     border: 1px solid black;
 }
-.login_title{
+.log_title{
     font-size: 36px;
     font-weight: bold;
     line-height: 110px;
     text-align: center;
 }
-.login_form{
+.log_form{
     display: grid;
     font-size: 24px;
 }
-.login_form-item{
+.log_form-item{
     margin-bottom: 42px;
     margin-left: 25px;
 }
-.login_form-btn{
+.log_form-btn{
     width: 240px;
     height: 50px;
     justify-self: center;
     font-size: 24px;
     background-color: unset;
     border: 1px solid black;
+    margin-bottom: 50px;
+}
+.log_errors{
+    font-size: 16px;
+    color: red;
 }
