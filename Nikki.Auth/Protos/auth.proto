@@ -21,9 +21,9 @@ message SignInResponse {
   bool isSucceed = 1;
   string accessToken = 2;
   string refreshToken = 3;
-  string usernameError = 4;
-  string emailError = 5;
-  string passwordError = 6;
+  string usernameErrors = 4;
+  string emailErrors = 5;
+  string passwordErrors = 6;
 }
 
 message LogInRequest {
@@ -35,8 +35,8 @@ message LogInResponse {
   bool isSucceed = 1;
   string accessToken = 2;
   string refreshToken = 3;
-  string usernameError = 4;
-  string passwordError = 5;
+  string usernameErrors = 4;
+  string passwordErrors = 5;
 }
 
 message TokenValidationRequest {
