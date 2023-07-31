@@ -10,34 +10,62 @@
 
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Sign In</title>
     <link rel="stylesheet" href="/css/signIn.css"/>
 </head>
 <body>
-<div class="login">
+<div class="sign">
     <div class="container">
-        <div class="login_content">
-            <p class="login_title">Log In</p>
-            <form class="login_form" method="post">
-                <div class="login_form-item">
+        <div class="sign_content">
+            <p class="sign_title">Sign In</p>
+            <form class="sign_form" method="post">
+                <div class="sign_form-item">
                     <a>Enter your username:</a>
                     <label>
-                        <input name="login" type="text">
+                        <input name="username" type="text">
                     </label>
+                    @if (Model.UsernameErrors is not null)
+                    {
+                        <ul class="sign_errors">
+                            @foreach (var error in Model.UsernameErrors)
+                            {
+                                <li>@error</li>
+                            }
+                        </ul>
+                    }
                 </div>
-                <div class="login_form-item">
+                <div class="sign_form-item">
                     <a>Enter your email:</a>
                     <label>
-                        <input name="login" type="text">
+                        <input name="email" type="text">
                     </label>
+                    @if (Model.EmailErrors is not null)
+                    {
+                        <ul class="sign_errors">
+                            @foreach (var error in Model.EmailErrors)
+                            {
+                                <li>@error</li>
+                            }
+                        </ul>
+                    }
                 </div>
-                <div class="login_form-item">
+                <div class="sign_form-item">
                     <a>Enter your password:</a>
                     <label>
                         <input name="password" type="password">
                     </label>
+                    @if (Model.PasswordErrors is not null)
+                    {
+                        <ul class="sign_errors">
+                            @foreach (var error in Model.PasswordErrors)
+                            {
+                                <li>@error</li>
+                            }
+                        </ul>
+                    }
                 </div>
-                <button class="login_form-btn" type="submit">
+                <button class="sign_form-btn" type="submit">
                     Submit
                 </button>
             </form>

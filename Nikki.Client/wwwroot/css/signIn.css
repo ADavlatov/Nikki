@@ -18,39 +18,39 @@ input{
     max-width: 1440px;
     margin: 0 auto;
 }
-.signin{
+.sign{
     display: grid;
     margin-top: 150px;
 }
-.signin_content{
+.sign_content{
     grid-template-rows: repeat(5, auto);
-    height: 680px;
     width: 500px;
     border: 1px solid black;
 }
-.signin_title{
+.sign_title{
     font-size: 36px;
     font-weight: bold;
     line-height: 110px;
     text-align: center;
 }
-.signin_form{
+.sign_form{
     display: grid;
     font-size: 24px;
 }
-.signin_form-item{
+.sign_form-item{
     margin-bottom: 42px;
     margin-left: 25px;
 }
-.signin_form-btn{
+.sign_form-btn{
     width: 240px;
     height: 50px;
     justify-self: center;
     font-size: 24px;
     background-color: unset;
     border: 1px solid black;
+    margin-bottom: 50px;
 }
-.signin_errors{
+.sign_errors{
     font-size: 16px;
     color: red;
 }
