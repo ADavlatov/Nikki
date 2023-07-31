@@ -1,0 +1,27 @@
+@page
+@model Nikki.Client.Pages.Notice
+
+@{
+    Layout = "Shared/_Layout";
+    ViewBag.IsAuth = false;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nikki</title>
+    <link rel="stylesheet" href="/css/notice.css"/>
+</head>
+<body>
+<div class="notice">
+    <div class="container">
+        <div class="notice_content">
+            <p class="notice_text">Sign in is successful</p>
+            <a asp-page="Index" class="notice_btn">Return</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
