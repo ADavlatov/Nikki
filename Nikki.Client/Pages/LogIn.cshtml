@@ -17,14 +17,14 @@
 <div class="log">
     <div class="container">
         <div class="log_content">
-            <p class="login_title">Log In</p>
+            <p class="log_title">Log In</p>
             <form class="log_form" method="post">
                 <div class="log_form-item">
                     <a>Enter your username or email:</a>
                     <label>
-                        <input name="log" type="text">
+                        <input name="username" type="text">
                     </label>
-                    @if (Model.UsernameErrors is not null)
+                    @if (Model.UsernameErrors is not null && Model.UsernameErrors.Length > 0)
                     {
                         <ul class="log_errors">
                             @foreach (var error in Model.UsernameErrors)
@@ -39,7 +39,7 @@
                     <label>
                         <input name="password" type="password">
                     </label>
-                    @if (Model.PasswordErrors is not null)
+                    @if (Model.PasswordErrors is not null && Model.PasswordErrors.Length > 0)
                     {
                         <ul class="log_errors">
                             @foreach (var error in Model.PasswordErrors)

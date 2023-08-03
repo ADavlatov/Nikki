@@ -19,10 +19,10 @@ public class AuthService : Auth.AuthBase
             return Task.FromResult(new SignInResponse
             {
                 IsSucceed = false,
-                UsernameError = string.Join(", ",
+                UsernameErrors = string.Join(", ",
                     validationResult.Errors.Where(x => x.ErrorMessage.Contains("username"))),
-                EmailError = string.Join(", ", validationResult.Errors.Where(x => x.ErrorMessage.Contains("email"))),
-                PasswordError = string.Join(", ",
+                EmailErrors = string.Join(", ", validationResult.Errors.Where(x => x.ErrorMessage.Contains("email"))),
+                PasswordErrors = string.Join(", ",
                     validationResult.Errors.Where(x => x.ErrorMessage.Contains("password")))
             });
         }
@@ -52,9 +52,9 @@ public class AuthService : Auth.AuthBase
             return Task.FromResult(new LogInResponse
             {
                 IsSucceed = false,
-                UsernameError = string.Join(",",
+                UsernameErrors = string.Join(",",
                     validationResult.Errors.Where(x => x.ErrorMessage.Contains("username"))),
-                PasswordError = string.Join(",",
+                PasswordErrors = string.Join(",",
                     validationResult.Errors.Where(x => x.ErrorMessage.Contains("password")))
             });
         }

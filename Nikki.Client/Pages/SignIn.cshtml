@@ -25,7 +25,7 @@
                     <label>
                         <input name="username" type="text">
                     </label>
-                    @if (Model.UsernameErrors is not null)
+                    @if (Model.UsernameErrors is not null && Model.UsernameErrors.Length > 0)
                     {
                         <ul class="sign_errors">
                             @foreach (var error in Model.UsernameErrors)
@@ -40,7 +40,7 @@
                     <label>
                         <input name="email" type="text">
                     </label>
-                    @if (Model.EmailErrors is not null)
+                    @if (Model.EmailErrors is not null && Model.EmailErrors.Length > 0)
                     {
                         <ul class="sign_errors">
                             @foreach (var error in Model.EmailErrors)
@@ -55,7 +55,7 @@
                     <label>
                         <input name="password" type="password">
                     </label>
-                    @if (Model.PasswordErrors is not null)
+                    @if (Model.PasswordErrors is not null && Model.PasswordErrors.Length > 0)
                     {
                         <ul class="sign_errors">
                             @foreach (var error in Model.PasswordErrors)
