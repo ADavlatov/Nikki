@@ -1,0 +1,29 @@
+@page
+@using Nikki.Client.Services
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Nikki.Client.Pages.Logout
+
+@{
+    Layout = "Shared/_Layout";
+    ViewBag.IsAuth = new AuthValidationService().ValidateUserAuth(Request, Response);
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nikki</title>
+    <link rel="stylesheet" href="/css/logout.css"/>
+</head>
+<body>
+<div class="logout">
+    <div class="container">
+        <div class="logout_content">
+            <p class="logout_text">Confirm your account logout</p>
+            <button asp-page="Index" class="logout_btn">Logout</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
