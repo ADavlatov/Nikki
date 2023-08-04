@@ -1,9 +1,11 @@
 @page
+@using Nikki.Client.Services
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Nikki.Client.Pages.LogIn
 
 @{
     Layout = "Shared/_Layout";
-    ViewBag.IsAuth = false;
+    ViewBag.IsAuth = new AuthValidationService().ValidateUserAuth(Request, Response);
 }
 
 <!DOCTYPE html>

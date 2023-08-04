@@ -1,9 +1,11 @@
 @page
+@using Grpc.Net.Client
+@using Nikki.Client.Services
 @model Nikki.Client.Pages.Index
 
 @{
     Layout = "Shared/_Layout";
-    ViewBag.IsAuth = false;
+    ViewBag.IsAuth = new AuthValidationService().ValidateUserAuth(Request, Response);
 }
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@
 </head>
 <body>
 <div>
-    
+
 </div>
 </body>
 </html>
