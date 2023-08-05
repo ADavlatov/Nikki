@@ -1,11 +1,15 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Nikki.Client.Services;
 
 namespace Nikki.Client.Pages;
 
 public class Logout : PageModel
 {
-    public void OnGet()
+    public RedirectToPageResult OnGet()
     {
+        LogoutService.Logout(Response);
         
+        return RedirectToPage("Index");
     }
 }
