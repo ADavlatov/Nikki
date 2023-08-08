@@ -3,45 +3,53 @@
     margin: 0;
     font-family: sans-serif;
 }
-a{
+
+a {
     text-decoration: unset;
     color: black;
 }
-input{
+
+input {
     height: 50px;
     width: 450px;
     font-size: 24px;
     padding-left: 10px;
     margin: 15px 0;
 }
-.container{
-    max-width: 1440px;
+
+.container {
     margin: 0 auto;
 }
-.sign{
+
+.sign {
     display: grid;
     margin-top: 150px;
 }
-.sign_content{
+
+.sign_content {
     grid-template-rows: repeat(5, auto);
     width: 500px;
     border: 1px solid black;
 }
-.sign_title{
+
+.sign_title {
     font-size: 36px;
     font-weight: bold;
     line-height: 110px;
     text-align: center;
 }
-.sign_form{
+
+.sign_form {
     display: grid;
     font-size: 24px;
 }
-.sign_form-item{
+
+.sign_form-item {
     margin-bottom: 42px;
     margin-left: 25px;
 }
-.sign_form-btn{
+
+.sign_form-btn {
     width: 240px;
     height: 50px;
     justify-self: center;
@@ -50,7 +58,8 @@ input{
     border: 1px solid black;
     margin-bottom: 50px;
 }
-.sign_errors{
+
+.sign_errors {
     font-size: 16px;
     color: red;
 }

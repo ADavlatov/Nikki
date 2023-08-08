@@ -3,37 +3,47 @@
     margin: 0;
     font-family: sans-serif;
 }
-a{
+
+a {
     text-decoration: unset;
     color: black;
 }
-a:hover{
+
+a:hover {
     color: gray;
 }
-.container{
-    max-width: 1440px;
+
+.container {
     margin: 0 auto;
 }
-.header{
+
+.header {
     height: 74px;
     border-bottom: solid 1px #000000;
 }
-.header_content{
+
+.header_content {
     display: grid;
     grid-template-columns: repeat(2, auto);
 }
-.header_logo{
+
+.header_logo {
     font-size: 48px;
     font-weight: bold;
     width: 270px;
     text-align: center;
     line-height: 74px;
 }
-.header_navigation{
+
+.header_navigation {
     font-size: 24px;
-    width: 460px;
     line-height: 74px;
     display: grid;
     grid-template-columns: repeat(4, auto);
     justify-self: right;
+    margin-right: 20px;
+}
+
+.header_item {
+    margin: 0 30px;
 }

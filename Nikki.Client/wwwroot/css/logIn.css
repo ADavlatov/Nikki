@@ -3,45 +3,53 @@
     margin: 0;
     font-family: sans-serif;
 }
-a{
+
+a {
     text-decoration: unset;
     color: black;
 }
-input{
+
+input {
     height: 50px;
     width: 450px;
     font-size: 24px;
     padding-left: 10px;
     margin: 15px 0;
 }
-.container{
-    max-width: 1440px;
+
+.container {
     margin: 0 auto;
 }
-.log{
+
+.log {
     display: grid;
     margin-top: 150px;
 }
-.log_content{
+
+.log_content {
     grid-template-rows: repeat(5, auto);
     width: 500px;
     border: 1px solid black;
 }
-.log_title{
+
+.log_title {
     font-size: 36px;
     font-weight: bold;
     line-height: 110px;
     text-align: center;
 }
-.log_form{
+
+.log_form {
     display: grid;
     font-size: 24px;
 }
-.log_form-item{
+
+.log_form-item {
     margin-bottom: 42px;
     margin-left: 25px;
 }
-.log_form-btn{
+
+.log_form-btn {
     width: 240px;
     height: 50px;
     justify-self: center;
@@ -50,7 +58,8 @@ input{
     border: 1px solid black;
     margin-bottom: 50px;
 }
-.log_errors{
+
+.log_errors {
     font-size: 16px;
     color: red;
 }
