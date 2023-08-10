@@ -1,0 +1,75 @@
+@page
+@model Nikki.Client.Pages.Spaces
+
+@{
+    Layout = "Shared/_Layout";
+    ViewBag.IsAuth = true;
+    List<string> str = new List<string>() { "qweqwe", "qweasdaqwe", "qweqweq" };
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nikki</title>
+    <link rel="stylesheet" href="/css/spaces.css"/>
+    <script src="/js/scripts.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="container">
+        <div class="main_sidebar">
+            <p class="sidebar_title">
+                Your spaces
+                <img class="sidebar_title-img" src="/png/arrow.png" height="512" width="512" alt=""/>
+            </p>
+            <ul>
+                @foreach (var item in str)
+                {
+                    <li class="sidebar_item" onclick="openItem()">
+                        <p class="sidebar_item-name">
+                            Space 1
+                            <img class="sidebar_item-img" src="/png/arrow.png" height="512" width="512" alt="">
+                        </p>
+                        <ul class="item_list">
+                            <li class="item_content">
+                                Table 1
+                            </li>
+                            <li class="item_content">
+                                Table 2
+                            </li>
+                            <li class="item_content">
+                                Table 3
+                            </li>
+                        </ul>
+                    </li>
+                }
+                @* <li class="sidebar_item"> *@
+                @*     <p class="sidebar_item-name"> *@
+                @*         Space 1 *@
+                @*         <img class="sidebar_item-img" src="arrow.png" height="512" width="512" alt="" *@
+                @*              onclick="openItem()"> *@
+                @*     </p> *@
+                @*     <ul class="item_list"> *@
+                @*         <li class="item_content"> *@
+                @*             Table 1 *@
+                @*         </li> *@
+                @*         <li class="item_content"> *@
+                @*             Table 2 *@
+                @*         </li> *@
+                @*         <li class="item_content"> *@
+                @*             Table 3 *@
+                @*         </li> *@
+                @*     </ul> *@
+                @* </li> *@
+                
+            </ul>
+            <div class="main_space">
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
