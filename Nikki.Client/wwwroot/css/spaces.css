@@ -18,8 +18,8 @@ li{
     margin: 0 auto;
 }
 .main_sidebar{
-    border: 1px solid black;
-    width: 270px;
+    border: 2px solid black;
+    width: 272px;
     height: 100vh;
 }
 .sidebar_title{
@@ -38,9 +38,7 @@ li{
     rotate: 180deg;
 }
 .sidebar_item{
-    height: 52px;
     width: 270px;
-    border-bottom: 0.5px solid black;
 }
 .sidebar_item-name{
     font-size: 20px;
@@ -49,6 +47,7 @@ li{
     align-self: start;
     display: grid;
     grid-template-columns: repeat(2, auto);
+    border: 1px solid black;
 }
 .sidebar_item-img{
     height: 18px;
@@ -66,5 +65,5 @@ li{
     font-size: 18px;
     line-height: 40px;
     padding-left: 20px;
-    border-bottom: 0.5px solid black;
+    border: 1px solid black;
 }
