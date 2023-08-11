@@ -17,10 +17,15 @@ li{
 .container {
     margin: 0 auto;
 }
+.main_content{
+    display: grid;
+    grid-template-columns: auto 100%;
+}
 .main_sidebar{
-    border: 2px solid black;
-    width: 272px;
+    border-right: 1px solid black;
+    width: 270px;
     height: 100vh;
+    display: none;
 }
 .sidebar_title{
     display: grid;
@@ -47,7 +52,10 @@ li{
     align-self: start;
     display: grid;
     grid-template-columns: repeat(2, auto);
-    border: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.sidebar_item-name:hover{
+    background-color: darkgrey;
 }
 .sidebar_item-img{
     height: 18px;
@@ -65,5 +73,29 @@ li{
     font-size: 18px;
     line-height: 40px;
     padding-left: 20px;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.item_content:hover{
+    background-color: darkgrey;
+}
+.main_sidebar-hidden{
+    width: 50px;
+    display: grid;
+    border-right: 1px solid black;
+    height: 100vh;
+}
+.sidebar_hidden-img{
+    height: 24px;
+    width: 24px;
+    justify-self: center;
+    margin-top: 15px;
+}
+.main_space{
+    width: 100vw;
+}
+.space_title{
+    font-size: 24px;
+    line-height: 52px;
+    padding-left: 30px;
+    border-bottom: 1px solid black;
 }
