@@ -54,18 +54,20 @@
             </div>
             <div class="main_space">
                 <div class="space_title">
-                    Space name
+                    <p class="space_title-text">
+                        Space name
+                    </p>
+                    <div class="space_title-btn">
+                        <img class="btn-img" src="/png/plus.png" alt=""/>
+                    </div>
                 </div>
                 <div class="space_content">
-                    <div class="space_content-item">
-
-                    </div>
-                    <div class="space_content-item">
-
-                    </div>
-                    <div class="space_content-item">
-
-                    </div>
+                    @foreach (var item in str)
+                    {
+                        <div class="space_content-item">
+                            @item
+                        </div>
+                    }
                 </div>
             </div>
         </div>
