@@ -1,10 +1,14 @@
 @page
+@using Nikki.Client.Services
 @model Nikki.Client.Pages.Spaces
 
 @{
     Layout = "Shared/_Layout";
-    ViewBag.IsAuth = true;
-    List<string> str = new List<string>() { "qweqwe", "qweasdaqwe", "qweqweq" };
+    ViewBag.IsAuth = new AuthValidationService().ValidateUserAuth(Request, Response);
+    List<string> spaces = new List<string>() { "qweqwe", "qweasdaqwe", "qweqweq" };
+    List<string> lists = new List<string>() { "qwertertqwe" };
+    List<string> items = new List<string>() { "qwasdasdeqwe", "qweaasdasdsdasdaqwe", "qwasdasdasdasdasdeqweq" };
+    
 }
 
 <!DOCTYPE html>
@@ -26,11 +30,11 @@
                     <img class="sidebar_title-img" src="/png/arrow.png" height="512" width="512" alt=""/>
                 </p>
                 <ul>
-                    @foreach (var item in str)
+                    @foreach (var space in spaces)
                     {
-                        <li class="sidebar_item" id="@item">
+                        <li class="sidebar_item" id="@space">
                             <p class="sidebar_item-name"
-                               onclick="openItem(@item)">
+                               onclick="openItem(@space)">
                                 Space 1
                                 <img class="sidebar_item-img" src="/png/arrow.png" height="512" width="512" alt="">
                             </p>
@@ -62,10 +66,59 @@
                     </div>
                 </div>
                 <div class="space_content">
-                    @foreach (var item in str)
+                    @foreach (var list in lists)
                     {
                         <div class="space_content-item">
-                            @item
+                            <div class="content_title">
+                                <p class="content_title-text">TO DO</p>
+                                <div class="content_title-btn">
+                                    <img class="content_title-img" src="/png/plus.png" alt=""/>
+                                </div>
+                            </div>
+                            @foreach (var item in items)
+                            {
+                                <div class="content_item">
+                                    <p class="item_name">
+                                        Task name Task name Task name Task name Task name Task name Task name
+                                        Task name Task name Task name
+                                    </p>
+                                    <div class="item_attached">
+                                        <p class="item_attached-text">
+                                            3
+                                        </p>
+                                        <img class="item_attached-img" src="/png/attached.png" alt=""/>
+                                    </div>
+                                    <div class="item_buttons">
+                                        <div class="item_buttons-left">
+                                            <img class="item_buttons-img" src="/png/calendar.png" alt=""/>
+                                            <img class="item_buttons-img" src="/png/flag.png" alt=""/>
+                                            <img class="item_buttons-img" src="/png/tag.png" alt=""/>
+                                        </div>
+                                        <div class="item_buttons-right">
+                                            <img class="item_buttons-img" src="/png/check.png" alt=""/>
+                                            <img onclick="openMenu(@item)" class="item_buttons-img" src="/png/dots.png" alt=""/>
+                                            <div class="item_menu" id="@item">
+                                                <div class="item_menu-content">
+                                                    <img class="item_menu-content-img" src="/png/pen.png" alt="">
+                                                    <p>Rename</p>
+                                                </div>
+                                                <div class="item_menu-content">
+                                                    <img class="item_menu-content-img" src="/png/move.png" alt="">
+                                                    <p>Move</p>
+                                                </div>
+                                                <div class="item_menu-content">
+                                                    <img class="item_menu-content-img" src="/png/box.png" alt="">
+                                                    <p>Archive</p>
+                                                </div>
+                                                <div class="item_menu-content menu-last">
+                                                    <img class="item_menu-content-img" src="/png/delete.png" alt="">
+                                                    <p>Delete</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     }
                 </div>
