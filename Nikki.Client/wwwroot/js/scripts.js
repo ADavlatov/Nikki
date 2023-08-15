@@ -20,3 +20,11 @@ function openSidebar(){
         sidebar.style.display = "none";
     }
 }
+
+function openMenu(id){
+    if (id.style.display === "none") {
+        id.style.display = "unset";
+    } else {
+        id.style.display = "none";
+    }
+}
