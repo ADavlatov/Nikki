@@ -28,3 +28,13 @@ function openMenu(id){
         id.style.display = "none";
     }
 }
+
+function openItemAdd(id){
+    console.log(id)
+    id.style.display = "grid"
+}
+
+function closeItemAdd(id){
+    console.log(id)
+    id.style.display = "none"
+}
