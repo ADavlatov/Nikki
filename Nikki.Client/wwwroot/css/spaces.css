@@ -272,7 +272,7 @@ select {
     border: none;
 }
 
-.main_add {
+.popup {
     position: absolute;
     z-index: 10000;
     background-color: white;
@@ -285,25 +285,20 @@ select {
     transform: translate(-50%, -50%);
 }
 
-.add_choose-title {
-    font-size: 24px;
-    line-height: 45px;
-}
-
-.add_title {
+.popup_title {
     border-bottom: 1px solid black;
     display: grid;
     grid-template-columns: 100% auto;
 }
 
-.add_title-text {
+.popup_title-text {
     font-size: 40px;
     font-weight: bold;
     line-height: 100px;
     justify-self: center;
 }
 
-.add_title-btn {
+.popup_title-btn {
     border: 1px solid black;
     width: 40px;
     height: 40px;
@@ -316,16 +311,21 @@ select {
     position: absolute;
 }
 
-.add_title-img {
+.popup_title-img {
     height: 26px;
     rotate: 45deg;
 }
 
-.add_choose-item {
+.popup_item {
     padding: 10px 30px;
 }
 
-.add_choose-btn {
+.popup_item-title {
+    font-size: 24px;
+    line-height: 45px;
+}
+
+.popup_btn {
     width: 240px;
     height: 50px;
     justify-self: center;
@@ -333,17 +333,4 @@ select {
     background-color: unset;
     border: 1px solid black;
     margin: 20px 0 40px 0;
-}
-
-.item_add {
-    position: absolute;
-    z-index: 10000;
-    background-color: white;
-    border: 1px solid black;
-    display: none;
-    justify-content: center;
-    justify-self: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }

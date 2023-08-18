@@ -22,192 +22,436 @@
     <script src="/js/scripts.js"></script>
 </head>
 <body>
-@{
-    if (ViewBag.IsAuth)
-    {
-        <div class="main">
-            <div class="container">
-                <div class="main_content">
-                    <div class="main_sidebar" id="sidebar">
-                        <p class="sidebar_title" onclick="openSidebar()">
-                            Your spaces
-                            <img class="sidebar_title-img" src="/png/arrow.png" height="512" width="512" alt=""/>
+<div class="main">
+    <div class="container">
+        <div class="main_content">
+            <div class="main_sidebar-hidden" id="sidebar-hidden" onclick="openSidebar()">
+                <img class="sidebar_hidden-img" src="/png/arrow.png" height="512" width="512" alt=""/>
+            </div>
+            <div class="main_sidebar" id="sidebar">
+                <p class="sidebar_title" onclick="openSidebar()">
+                    Your spaces
+                    <img class="sidebar_title-img" src="/png/arrow.png" height="512" width="512" alt=""/>
+                </p>
+                <ul>
+                    <li class="sidebar_item" id="item1">
+                        <p class="sidebar_item-name"
+                           onclick="openSidebarItem(item1)">
+                            Space 1
+                            <img class="sidebar_item-img" src="/png/arrow.png" height="512" width="512" alt="">
                         </p>
-                        <ul>
-                            @foreach (var space in spaces)
-                            {
-                                <li class="sidebar_item" id="@space">
-                                    <p class="sidebar_item-name"
-                                       onclick="openItem(@space)">
-                                        Space 1
-                                        <img class="sidebar_item-img" src="/png/arrow.png" height="512" width="512" alt="">
-                                    </p>
-                                    <ul class="item_list">
-                                        <li class="item_content">
-                                            Table 1
-                                        </li>
-                                        <li class="item_content">
-                                            Table 2
-                                        </li>
-                                        <li class="item_content">
-                                            Table 3
-                                        </li>
-                                    </ul>
-                                </li>
-                            }
+                        <ul class="item_list">
+                            <li class="item_content">
+                                Table 1
+                            </li>
+                            <li class="item_content">
+                                Table 2
+                            </li>
+                            <li class="item_content">
+                                Table 3
+                            </li>
                         </ul>
+                    </li>
+                    <li class="sidebar_item" id="item2">
+                        <p class="sidebar_item-name"
+                           onclick="openSidebarItem(item2)">
+                            Space 1
+                            <img class="sidebar_item-img" src="/png/arrow.png" height="512" width="512" alt="">
+                        </p>
+                        <ul class="item_list">
+                            <li class="item_content">
+                                Table 1
+                            </li>
+                            <li class="item_content">
+                                Table 2
+                            </li>
+                            <li class="item_content">
+                                Table 3
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar_item" id="item3">
+                        <p class="sidebar_item-name"
+                           onclick="openSidebarItem(item3)">
+                            Space 1
+                            <img class="sidebar_item-img" src="/png/arrow.png" height="512" width="512" alt="">
+                        </p>
+                        <ul class="item_list">
+                            <li class="item_content">
+                                Table 1
+                            </li>
+                            <li class="item_content">
+                                Table 2
+                            </li>
+                            <li class="item_content">
+                                Table 3
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="main_space">
+                <div class="space_title">
+                    <p class="space_title-text">
+                        Space name | table
+                    </p>
+                    <div class="space_title-btn" onclick="openItem(addStatus)">
+                        <img class="btn-img" src="/png/plus.png" alt=""/>
                     </div>
-                    <div class="main_sidebar-hidden" id="sidebar-hidden" onclick="openSidebar()">
-                        <img class="sidebar_hidden-img" src="/png/arrow.png" height="512" width="512" alt=""/>
-                    </div>
-                    <div class="main_space">
-                        <div class="space_title">
-                            <p class="space_title-text">
-                                Space name
-                            </p>
-                            <div class="space_title-btn">
-                                <img class="btn-img" src="/png/plus.png" alt=""/>
+                </div>
+                <div class="space_content">
+                    <div class="space_content-item">
+                        <div class="content_title">
+                            <p class="content_title-text">TO DO</p>
+                            <div class="content_title-btn open-popup" onclick="openItem(addTask1)">
+                                <img class="content_title-img" src="/png/plus.png" alt=""/>
                             </div>
                         </div>
-                        <div class="space_content">
-                            @foreach (var list in lists)
-                            {
-                                <div class="space_content-item">
-                                    <div class="content_title">
-                                        <p class="content_title-text">TO DO</p>
-                                        <div class="content_title-btn" onclick="openItemAdd(@list)">
-                                            <img class="content_title-img" src="/png/plus.png" alt=""/>
-                                        </div>
-                                    </div>
-                                    @foreach (var item in items)
-                                    {
-                                        <div class="content_item">
-                                            <p class="item_name">
-                                                Task name Task name Task name Task name Task name Task name Task name
-                                                Task name Task name Task name
-                                            </p>
-                                            <div class="item_attached">
-                                                <p class="item_attached-text">
-                                                    3
-                                                </p>
-                                                <img class="item_attached-img" src="/png/attached.png" alt=""/>
-                                            </div>
-                                            <div class="item_buttons">
-                                                <div class="item_buttons-left">
-                                                    <img class="item_buttons-img" src="/png/calendar.png" alt=""/>
-                                                    <img class="item_buttons-img" src="/png/flag.png" alt=""/>
-                                                </div>
-                                                <div class="item_buttons-right">
-                                                    <img class="item_buttons-img" src="/png/check.png" alt=""/>
-                                                    <img onclick="openMenu(@item)" class="item_buttons-img" src="/png/dots.png" alt=""/>
-                                                    <div class="item_menu" id="@item">
-                                                        <div class="item_menu-content">
-                                                            <img class="item_menu-content-img" src="/png/pen.png" alt="">
-                                                            <p>Rename</p>
-                                                        </div>
-                                                        <div class="item_menu-content">
-                                                            <img class="item_menu-content-img" src="/png/move.png" alt="">
-                                                            <p>Move</p>
-                                                        </div>
-                                                        <div class="item_menu-content">
-                                                            <img class="item_menu-content-img" src="/png/box.png" alt="">
-                                                            <p>Archive</p>
-                                                        </div>
-                                                        <div class="item_menu-content menu-last">
-                                                            <img class="item_menu-content-img" src="/png/delete.png" alt="">
-                                                            <p>Delete</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
+                        <div class="content_item">
+                            <p class="item_name">Task name Task name Task name Task name Task name Task name Task name
+                                Task name Task name Task name </p>
+                            <div class="item_attached open-popup" onclick="openItem(subtask)">
+                                <p class="item_attached-text">
+                                    3
+                                </p>
+                                <img class="item_attached-img" src="/png/attached.png" alt=""/>
+                            </div>
+                            <div class="item_buttons">
+                                <div class="item_buttons-left">
+                                    <img class="item_buttons-img open-popup" src="/png/calendar.png" alt="" onclick="openItem(changeDate)"/>
+                                    <img class="item_buttons-img open-popup" src="/png/flag.png" alt="" onclick="openItem(priority)"/>
+<!--                                    <img class="item_buttons-img" src="tag.png" alt=""/>-->
                                 </div>
-                                <div class="item_add" id="@list">
-                                    <div class="add_title">
-                                        <p class="add_title-text">
-                                            Add task
-                                        </p>
-                                        <div class="add_title-btn" onclick="closeItemAdd(@list)">
-                                            <img class="add_title-img" src="/png/plus.png" alt=""/>
+                                <div class="item_buttons-right">
+                                    <img class="item_buttons-img" src="/png/check.png" alt=""/>
+                                    <img onclick="openMenu(task1)" class="item_buttons-img open-popup" src="/png/dots.png" alt=""/>
+                                    <div class="item_menu" id="task1">
+                                        <div class="item_menu-content open-popup" onclick="openItem(rename)">
+                                            <img class="item_menu-content-img" src="/png/pen.png" alt="">
+                                            <p>Rename</p>
+                                        </div>
+                                        <div class="item_menu-content open-popup" onclick="openItem(move)">
+                                            <img class="item_menu-content-img" src="/png/move.png" alt="">
+                                            <p>Move</p>
+                                        </div>
+<!--                                        <div class="item_menu-content">-->
+<!--                                            <img class="item_menu-content-img" src="box.png" alt="">-->
+<!--                                            <p>Archive</p>-->
+<!--                                        </div>-->
+                                        <div class="item_menu-content menu-last">
+                                            <img class="item_menu-content-img" src="/png/delete.png" alt="">
+                                            <p>Delete</p>
                                         </div>
                                     </div>
-                                    <div class="add_choose-item">
-                                        <p class="add_choose-title">
-                                            Choose status:
-                                        </p>
-                                        <label>
-                                            <select name="">
-                                                <option selected>
-                                                    @list
-                                                </option>
-                                                @foreach (var l in lists)
-                                                {
-                                                    if (list == l) 
-                                                    {
-                                                        continue;
-                                                    }
-                                                    <option>
-                                                        @l
-                                                    </option>
-                                                }
-                                            </select>
+                                </div>
+                            </div>
+                            <div class="popup" id="move">
+                                <div class="popup_title">
+                                    <p class="popup_title-text">
+                                        Move task:
+                                    </p>
+                                    <div class="popup_title-btn" onclick="closeItem(move)">
+                                        <img class="popup_title-img" src="/png/plus.png" alt=""/>
+                                    </div>
+                                </div>
+                                <div class="popup_item">
+                                    <p class="popup_item-title">
+                                        Space:
+                                    </p>
+                                    <label>
+                                        <select name="">
+                                            <option value="">
+                                                Low
+                                            </option>
+                                            <option value="">
+                                                Normal
+                                            </option>
+                                            <option value="">
+                                                High
+                                            </option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="popup_item">
+                                    <p class="popup_item-title">
+                                        Table:
+                                    </p>
+                                    <label>
+                                        <select name="">
+                                            <option value="">
+                                                Low
+                                            </option>
+                                            <option value="">
+                                                Normal
+                                            </option>
+                                            <option value="">
+                                                High
+                                            </option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="popup_item">
+                                    <p class="popup_item-title">
+                                        Status:
+                                    </p>
+                                    <label>
+                                        <select name="">
+                                            <option value="">
+                                                Low
+                                            </option>
+                                            <option value="">
+                                                Normal
+                                            </option>
+                                            <option value="">
+                                                High
+                                            </option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <button class="popup_btn" type="submit">
+                                    Submit
+                                </button>
+                            </div>
+                            <div class="popup" id="rename">
+                                <div class="popup_title">
+                                    <p class="popup_title-text">
+                                        Rename task:
+                                    </p>
+                                    <div class="popup_title-btn" onclick="closeItem(rename)">
+                                        <img class="popup_title-img" src="/png/plus.png" alt=""/>
+                                    </div>
+                                </div>
+                                <div class="popup_item">
+                                    <p class="popup_item-title">
+                                       New task name:
+                                    </p>
+                                    <label>
+                                        <input type="text">
+                                    </label>
+                                </div>
+                                <button class="popup_btn" type="submit">
+                                    Submit
+                                </button>
+                            </div>
+                            <div class="popup" id="subtask">
+                                <div class="popup_title">
+                                    <p class="popup_title-text">
+                                        Add subtask
+                                    </p>
+                                    <div class="popup_title-btn" onclick="closeItem(subtask)">
+                                        <img class="popup_title-img" src="/png/plus.png" alt=""/>
+                                    </div>
+                                </div>
+                                <div class="popup_item">
+                                    <p class="popup_item-title">
+                                        Subtask name:
+                                    </p>
+                                    <label>
+                                        <input type="text">
+                                    </label>
+                                </div>
+                                <div class="popup_item">
+                                    <p class="popup_item-title">
+                                        Priority:
+                                    </p>
+                                    <label>
+                                        <select name="">
+                                            <option value="">
+                                                Low
+                                            </option>
+                                            <option value="">
+                                                Normal
+                                            </option>
+                                            <option value="">
+                                                High
+                                            </option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <button class="popup_btn" type="submit">
+                                    Submit
+                                </button>
+                            </div>
+                            <div class="popup" id="priority">
+                                <div class="popup_title">
+                                    <p class="popup_title-text">
+                                        Set priority
+                                    </p>
+                                    <div class="popup_title-btn" onclick="closeItem(priority)">
+                                        <img class="popup_title-img" src="/png/plus.png" alt=""/>
+                                    </div>
+                                </div>
+                                <div class="popup_item">
+                                    <p class="popup_item-title">
+                                        Priority:
+                                    </p>
+                                    <label>
+                                        <select name="">
+                                            <option value="">
+                                                Low
+                                            </option>
+                                            <option value="">
+                                                Normal
+                                            </option>
+                                            <option value="">
+                                                High
+                                            </option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <button class="popup_btn" type="submit">
+                                    Submit
+                                </button>
+                            </div>
+                            <div class="popup" id="changeDate">
+                                <div class="popup_title">
+                                    <p class="popup_title-text">
+                                        Set dates
+                                    </p>
+                                    <div class="popup_title-btn" onclick="closeItem(changeDate)">
+                                        <img class="popup_title-img" src="/png/plus.png" alt=""/>
+                                    </div>
+                                </div>
+                                <div class="popup_item">
+                                    <p class="popup_item-title">
+                                        Start date:
+                                    </p>
+                                    <label>
+                                        <input type="date">
+                                    </label>
+                                </div>
+                                <div class="popup_item">
+                                    <p class="popup_item-title">
+                                        Due date:
+                                    </p>
+                                    <label>
+                                        <input type="date">
+                                    </label>
+                                </div>
+                                <button class="popup_btn" type="submit">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                        <div class="popup" id="addTask1">
+                            <div class="popup_title">
+                                <p class="popup_title-text">
+                                    Add task
+                                </p>
+                                <div class="popup_title-btn" onclick="closeItem(addTask1)">
+                                    <img class="popup_title-img" src="/png/plus.png" alt=""/>
+                                </div>
+                            </div>
+                            <div class="popup_item">
+                                <p class="popup_item-title">
+                                    Choose status:
+                                </p>
+                                <label>
+                                    <select name="">
+                                        Selected status
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="popup_item">
+                                <p class="popup_item-title">
+                                    Name new task:
+                                </p>
+                                <label>
+                                    <input type="text">
+                                </label>
+                            </div>
+                            <div class="popup_item">
+                                <p class="popup_item-title">
+                                    Choose date:
+                                </p>
+                                <label>
+                                    <input type="date">
+                                </label>
+                            </div>
+                            <div class="popup_item">
+                                <p class="popup_item-title">
+                                    Choose priority:
+                                </p>
+                                <label>
+                                    <select name="">
+                                        <option value="">
+                                            Low
+                                        </option>
+                                        <option value="">
+                                            Normal
+                                        </option>
+                                        <option value="">
+                                            High
+                                        </option>
+                                    </select>
+                                </label>
+                            </div>
+<!--                            <div class="popup_item">-->
+<!--                                <p class="popup_item-title">-->
+<!--                                    Choose tags:-->
+<!--                                </p>-->
+<!--                                <label>-->
+<!--                                    <select>-->
+<!--                                        <option value="">-->
+<!--                                            Low-->
+<!--                                        </option>-->
+<!--                                        <option value="">-->
+<!--                                            Normal-->
+<!--                                        </option>-->
+<!--                                        <option value="">-->
+<!--                                            High-->
+<!--                                        </option>-->
+<!--                                    </select>-->
+<!--                                </label>-->
+<!--                            </div>-->
+                            <button class="popup_btn" type="submit">
+                                Submit
+                            </button>
+                        </div>
+                        <div class="popup" id="addStatus">
+                            <div class="popup_title">
+                                <p class="popup_title-text">
+                                    Add status
+                                </p>
+                                <div class="popup_title-btn" onclick="closeItem(addStatus)">
+                                    <img class="popup_title-img" src="/png/plus.png" alt=""/>
+                                </div>
+                            </div>
+                            <div class="popup_item">
+                                <p class="popup_item-title">
+                                    Choose space:
+                                </p>
+                                <label>
+                                    <select name="">
 
-                                        </label>
-                                    </div>
-                                    <div class="add_choose-item">
-                                        <p class="add_choose-title">
-                                            Name new task:
-                                        </p>
-                                        <label>
-                                            <input type="text">
-                                        </label>
-                                    </div>
-                                    <div class="add_choose-item">
-                                        <p class="add_choose-title">
-                                            Choose date:
-                                        </p>
-                                        <label>
-                                            <input type="date">
-                                        </label>
-                                    </div>
-                                    <div class="add_choose-item">
-                                        <p class="add_choose-title">
-                                            Choose priority:
-                                        </p>
-                                        <label>
-                                            <select name="">
-                                                Selected status
-                                                <option value="">
-                                                    Low
-                                                </option>
-                                                <option value="">
-                                                    Normal
-                                                </option>
-                                                <option value="">
-                                                    High
-                                                </option>
-                                            </select>
-                                        </label>
-                                    </div>
-                                    <button class="add_choose-btn" type="submit">
-                                        Submit
-                                    </button>
-                                </div>
-                            }
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="popup_item">
+                                <p class="popup_item-title">
+                                    Name new status:
+                                </p>
+                                <label>
+                                    <input type="text">
+                                </label>
+                            </div>
+                            <div class="popup_item">
+                                <p class="popup_item-title">
+                                    Choose color:
+                                </p>
+                                <label>
+                                    <input type="text">
+                                </label>
+                            </div>
+                            <button class="popup_btn" type="submit">
+                                Submit
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    }
-    else
-    {
-        <div>
-            <h1>Unauthorized</h1>
-        </div>
-    }
-}
-
+    </div>
+</div>
 </body>
 </html>
