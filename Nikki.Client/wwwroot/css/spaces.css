@@ -334,3 +334,77 @@ select {
     border: 1px solid black;
     margin: 20px 0 40px 0;
 }
+
+.task {
+    width: 800px;
+    justify-content: unset;
+}
+
+.task_title {
+    border-bottom: none;
+    line-height: 90px;
+}
+
+.task_title-text {
+    justify-self: start;
+    margin-left: 30px;
+}
+
+.task_name {
+    justify-self: center;
+    width: 740px;
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 20px;
+}
+
+.task_content {
+    height: 420px;
+    justify-self: center;
+    width: 740px;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+}
+
+.task_content-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 40px;
+}
+
+.task_content-text {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.task_content-desc {
+    width: 460px;
+}
+
+.task_content-item {
+    display: flex;
+    align-items: center;
+    justify-items: start;
+    line-height: 40px;
+    margin-top: 30px;
+}
+
+.item-text {
+    margin-left: 10px;
+}
+
+.task_subtasks-list {
+    border: 1px solid black;
+    width: 220px;
+    height: 350px;
+    overflow: auto;
+}
+
+.subtask {
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.subtask:hover {
+    background-color: darkgrey;
+}
