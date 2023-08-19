@@ -19,11 +19,12 @@ message SignInRequest {
 
 message SignInResponse {
   bool isSucceed = 1;
-  string accessToken = 2;
-  string refreshToken = 3;
-  string usernameErrors = 4;
-  string emailErrors = 5;
-  string passwordErrors = 6;
+  string userId = 2;
+  string accessToken = 3;
+  string refreshToken = 4;
+  string usernameErrors = 5;
+  string emailErrors = 6;
+  string passwordErrors = 7;
 }
 
 message LogInRequest {
@@ -33,10 +34,11 @@ message LogInRequest {
 
 message LogInResponse {
   bool isSucceed = 1;
-  string accessToken = 2;
-  string refreshToken = 3;
-  string usernameErrors = 4;
-  string passwordErrors = 5;
+  string userId = 2;
+  string accessToken = 3;
+  string refreshToken = 4;
+  string usernameErrors = 5;
+  string passwordErrors = 6;
 }
 
 message TokenValidationRequest {
@@ -54,7 +56,8 @@ message AccessTokenRequest {
 
 message AccessTokenResponse {
   bool isValid = 1;
-  string accessToken = 2;
-  string refreshToken = 3;
-  string error = 4;
+  string userId = 2;
+  string accessToken = 3;
+  string refreshToken = 4;
+  string error = 5;
 }
