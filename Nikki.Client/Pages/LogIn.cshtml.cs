@@ -1,6 +1,8 @@
 using Grpc.Net.Client;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Nikki.Auth;
+using Nikki.Client.Services;
 
 namespace Nikki.Client.Pages;
 
@@ -10,13 +12,12 @@ public class LogIn : PageModel
     public string[]? PasswordErrors { get; set; }
     public IActionResult? OnPost(string username, string password)
     {
-        var client = new Auth.AuthClient(GrpcChannel.ForAddress("https://localhost:7269"));
+        var client = new Auth.Auth.AuthClient(GrpcChannel.ForAddress("https://localhost:7269"));
         var response = client.LogInUser(new LogInRequest { Username = username, Password = password });
 
         if (response.IsSucceed)
         {
-            Response.Cookies.Append("AccessToken", response.AccessToken);
-            Response.Cookies.Append("RefreshToken", response.RefreshToken);
+            new TokenService().SetTokens(Response, response.AccessToken, response.RefreshToken, response.UserId);
 
             return RedirectToPage("/Notice");
         }
