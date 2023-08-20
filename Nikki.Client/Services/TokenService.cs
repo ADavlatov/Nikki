@@ -1,6 +1,8 @@
+using Nikki.Client.Interfaces;
+
 namespace Nikki.Client.Services;
 
-public class TokenService
+public class TokenService : ITokenService
 {
     public void SetTokens(HttpResponse response, string accessToken, string refreshToken, string userId)
     {
