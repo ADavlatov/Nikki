@@ -8,7 +8,7 @@ public class Logout : PageModel
 {
     public RedirectToPageResult OnGet()
     {
-        LogoutService.Logout(Response);
+        new LogoutService().Logout(Response);
         
         return RedirectToPage("Index");
     }
