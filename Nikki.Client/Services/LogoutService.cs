@@ -1,6 +1,8 @@
+using Nikki.Client.Interfaces;
+
 namespace Nikki.Client.Services;
 
-public class LogoutService
+public class LogoutService : ILogoutService
 {
     public void Logout(HttpResponse response)
     {
