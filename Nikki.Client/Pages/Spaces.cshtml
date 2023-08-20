@@ -4,8 +4,8 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "Shared/_Layout";
-    ViewBag.IsAuth = new AuthValidationService().ValidateUserAuth(Request, Response);
-
+    ViewBag.IsAuth = ViewData["IsAuth"] ?? false;
+    
     List<string> spaces = new List<string>() { "qweqwe", "qweasdaqwe", "qweqweq" };
     List<string> tables = new List<string>() { "qwertertqwe", "q2weqw" };
     List<string> statuses = new List<string>() { "qwasdasdeqwe", "qweaasdasdsdasdaqwe", "qwasdasdasdasdasdeqweq" };

@@ -1,11 +1,12 @@
 @page
 @using Grpc.Net.Client
+@using Nikki.Auth
 @using Nikki.Client.Services
 @model Nikki.Client.Pages.Index
 
 @{
     Layout = "Shared/_Layout";
-    ViewBag.IsAuth = new AuthValidationService().ValidateUserAuth(Request, Response);
+    ViewBag.IsAuth = ViewData["IsAuth"] ?? false;
 }
 
 <!DOCTYPE html>

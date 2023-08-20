@@ -31,4 +31,9 @@ public class SignIn : PageModel
 
         return null;
     }
+    
+    public void OnGet(LogoutService logout, TokenService token)
+    {
+        ViewData["IsAuth"] = new AuthValidationService(logout, token).ValidateUserAuth(Request, Response);
+    }
 }

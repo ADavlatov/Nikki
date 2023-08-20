@@ -6,9 +6,9 @@ namespace Nikki.Client.Pages;
 
 public class Logout : PageModel
 {
-    public RedirectToPageResult OnGet()
+    public RedirectToPageResult OnGet(LogoutService logoutService)
     {
-        new LogoutService().Logout(Response);
+        logoutService.Logout(Response);
         
         return RedirectToPage("Index");
     }

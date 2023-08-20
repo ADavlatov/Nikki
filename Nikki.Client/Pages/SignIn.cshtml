@@ -5,7 +5,7 @@
 
 @{
     Layout = "Shared/_Layout";
-    ViewBag.IsAuth = new AuthValidationService().ValidateUserAuth(Request, Response);
+    ViewBag.IsAuth = ViewData["IsAuth"] ?? false;
 }
 
 <!DOCTYPE html>
