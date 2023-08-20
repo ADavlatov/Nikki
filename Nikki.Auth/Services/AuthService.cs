@@ -38,7 +38,10 @@ public class AuthService : Auth.AuthBase
             IsSucceed = true,
             AccessToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 1)),
             RefreshToken =
-                new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 15))
+                new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 15)),
+            UserId = _db.Users.FirstOrDefault(x =>
+                    x.Username == request.Username && x.Email == request.Email && x.Password == request.Password)!.Id
+                .ToString()
         });
     }
 
@@ -63,7 +66,11 @@ public class AuthService : Auth.AuthBase
         {
             IsSucceed = true,
             AccessToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 1)),
-            RefreshToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 4320))
+            RefreshToken = new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(request.Username, 4320)),
+            UserId = _db.Users.FirstOrDefault(x =>
+                    (x.Username == request.Username || x.Email == request.Username) && x.Password == request.Password)!
+                .Id
+                .ToString()
         });
     }
 
@@ -101,7 +108,10 @@ public class AuthService : Auth.AuthBase
             AccessToken =
                 new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(jwt.Claims.First().Value, 1)),
             RefreshToken =
-                new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(jwt.Claims.First().Value, 15))
+                new JwtSecurityTokenHandler().WriteToken(TokenService.GetJwtToken(jwt.Claims.First().Value, 180)),
+            UserId = _db.Users.FirstOrDefault(x => x.Username == jwt.Claims.First().Value)!
+                .Id
+                .ToString()
         });
     }
 }
