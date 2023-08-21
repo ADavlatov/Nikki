@@ -13,7 +13,16 @@ public class CoreContext : DbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql("");
+        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=NikkiCore;Username=postgres;Password=admin");
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfiguration(new SpaceConfiguration());
+        modelBuilder.ApplyConfiguration(new TableConfiguration());
+        modelBuilder.ApplyConfiguration(new StatusConfiguration());
+        modelBuilder.ApplyConfiguration(new TaskConfiguration());
+        modelBuilder.ApplyConfiguration(new SubtaskConfiguration());
     }
 }
 
