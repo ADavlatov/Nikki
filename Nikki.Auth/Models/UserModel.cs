@@ -1,6 +1,6 @@
 namespace Nikki.Auth.Models;
 
-public record User
+public record UserModel
 {
     public Guid Id { get; set; }
     public string Username { get; set; }
