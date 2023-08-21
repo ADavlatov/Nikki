@@ -1,0 +1,128 @@
+syntax = "proto3";
+
+option csharp_namespace = "Nikki.Core";
+
+package auth;
+
+service Core {
+  rpc AddSpace (AddSpaceRequest) returns (AddSpaceResponse);
+  rpc AddTable (AddTableRequest) returns (AddTableResponse);
+  rpc AddStatus (AddStatusRequest) returns (AddStatusResponse);
+  rpc AddTask (AddTaskRequest) returns (AddTaskResponse);
+  rpc AddSubtask (AddSubtaskRequest) returns (AddSubtaskResponse);
+  rpc GetSpaces (GetSpacesRequest) returns (GetSpacesResponse);
+  rpc GetTables (GetTablesRequest) returns (GetTablesResponse);
+  rpc GetStatuses (GetStatusesRequest) returns (GetStatusesResponse);
+  rpc GetTasks (GetTasksRequest) returns (GetTasksResponse);
+  rpc GetSubtasks (GetSubtasksRequest) returns (GetSubtasksResponse);
+}
+
+message AddSpaceRequest {
+  string userId = 1;
+  string name = 2;
+}
+
+message AddSpaceResponse {
+  bool isSucceed = 1;
+  string status = 2;
+}
+
+message AddTableRequest {
+  string userId = 1;
+  string spaceName = 2;
+  string spaceId = 3;
+  string name = 4;
+}
+
+message AddTableResponse {
+  bool isSucceed = 1;
+  string status = 2;
+}
+
+message AddStatusRequest {
+  string tableName = 1;
+  string tableId = 2;
+  string name = 3;
+  string color = 4;
+}
+
+message AddStatusResponse {
+  bool isSucceed = 1;
+  string status = 2;
+}
+
+message AddTaskRequest {
+  string statusName = 1;
+  string statusId = 2;
+  string name = 3;
+  string priority = 4;
+  string dueDate = 5;
+  string startDate = 6;
+}
+
+message AddTaskResponse {
+  bool isSucceed = 1;
+  string status = 2;
+}
+
+message AddSubtaskRequest {
+  string taskName = 1;
+  string taskId = 2;
+  string name = 3;
+  string priority = 4;
+}
+
+message AddSubtaskResponse {
+  bool isSucceed = 1;
+  string status = 2;
+}
+
+message GetSpacesRequest {
+  string userId = 1;
+}
+
+message GetSpacesResponse {
+  string spacesId = 1;
+  string spacesName = 2;
+}
+
+message GetTablesRequest {
+  string spaceId = 1;
+}
+
+message GetTablesResponse {
+  string tablesId = 1;
+  string tablesName = 2;
+}
+
+message GetStatusesRequest {
+  string tableId = 1;
+}
+
+message GetStatusesResponse {
+  string statusesId = 1;
+  string statusesName = 2;
+  string statusesColor = 3;
+}
+
+message GetTasksRequest {
+  string statusId = 1;
+}
+
+message GetTasksResponse {
+  string tasksId = 1;
+  string tasksName = 2;
+  string tasksPriority = 3;
+  string tasksStartDate = 4;
+  string tasksDueDate = 5;
+}
+
+message GetSubtasksRequest {
+  string taskId = 1;
+}
+
+message GetSubtasksResponse {
+  string subtasksId = 1;
+  string subtasksName = 2;
+  string subtasksPriority = 3;
+}
