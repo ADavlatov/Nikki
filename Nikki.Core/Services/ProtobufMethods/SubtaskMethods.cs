@@ -1,6 +1,6 @@
 namespace Nikki.Core.Services.ProtobufMethods;
 
-public class Subtask
+public class SubtaskMethods
 {
     public AddSubtaskResponse Add()
     {

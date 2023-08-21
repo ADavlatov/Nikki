@@ -1,6 +1,6 @@
 namespace Nikki.Core.Services.ProtobufMethods;
 
-public class Table
+public class TableMethods
 {
     public AddTableResponse Add()
     {

@@ -1,8 +1,10 @@
+using Nikki.Core.Models;
+
 namespace Nikki.Core.Services.ProtobufMethods;
 
-public class Space
+public class SpaceMethods
 {
-    public AddSpaceResponse Add()
+    public AddSpaceResponse Add(AddSpaceRequest request, CoreContext? db)
     {
         return new AddSpaceResponse();
     }
