@@ -84,6 +84,8 @@ message GetSpacesRequest {
 message GetSpacesResponse {
   string spacesId = 1;
   string spacesName = 2;
+  bool isSucceed = 3;
+  string status = 4;
 }
 
 message GetTablesRequest {
@@ -93,6 +95,8 @@ message GetTablesRequest {
 message GetTablesResponse {
   string tablesId = 1;
   string tablesName = 2;
+  bool isSucceed = 3;
+  string status = 4;
 }
 
 message GetStatusesRequest {
@@ -103,6 +107,8 @@ message GetStatusesResponse {
   string statusesId = 1;
   string statusesName = 2;
   string statusesColor = 3;
+  bool isSucceed = 4;
+  string status = 5;
 }
 
 message GetTasksRequest {
@@ -115,6 +121,8 @@ message GetTasksResponse {
   string tasksPriority = 3;
   string tasksStartDate = 4;
   string tasksDueDate = 5;
+  bool isSucceed = 6;
+  string status = 7;
 }
 
 message GetSubtasksRequest {
@@ -125,4 +133,6 @@ message GetSubtasksResponse {
   string subtasksId = 1;
   string subtasksName = 2;
   string subtasksPriority = 3;
+  bool isSucceed = 4;
+  string status = 5;
 }
