@@ -1,9 +1,9 @@
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace Nikki.Core.Services.Validators;
+namespace Nikki.Core.Services.Validators.AddMethods;
 
-public class AddTableValidator : AbstractValidator<AddTableRequest>
+public class TableValidator : AbstractValidator<AddTableRequest>
 {
     public override ValidationResult Validate(ValidationContext<AddTableRequest> context)
     {

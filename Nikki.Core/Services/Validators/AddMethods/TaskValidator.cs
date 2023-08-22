@@ -1,9 +1,9 @@
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace Nikki.Core.Services.Validators;
+namespace Nikki.Core.Services.Validators.AddMethods;
 
-public class AddTaskValidator : AbstractValidator<AddTaskRequest>
+public class TaskValidator : AbstractValidator<AddTaskRequest>
 {
     public override ValidationResult Validate(ValidationContext<AddTaskRequest> context)
     {

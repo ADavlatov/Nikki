@@ -1,9 +1,9 @@
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace Nikki.Core.Services.Validators;
+namespace Nikki.Core.Services.Validators.AddMethods;
 
-public class AddSubtaskValidator : AbstractValidator<AddSubtaskRequest>
+public class SubtaskValidator : AbstractValidator<AddSubtaskRequest>
 {
     public override ValidationResult Validate(ValidationContext<AddSubtaskRequest> context)
     {
