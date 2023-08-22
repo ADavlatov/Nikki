@@ -30,7 +30,7 @@ message AddSpaceResponse {
 message AddTableRequest {
   string userId = 1;
   string spaceName = 2;
-  string spaceId = 3;
+  int32 spaceId = 3;
   string name = 4;
 }
 
@@ -41,7 +41,7 @@ message AddTableResponse {
 
 message AddStatusRequest {
   string tableName = 1;
-  string tableId = 2;
+  int32 tableId = 2;
   string name = 3;
   string color = 4;
 }
@@ -53,7 +53,7 @@ message AddStatusResponse {
 
 message AddTaskRequest {
   string statusName = 1;
-  string statusId = 2;
+  int32 statusId = 2;
   string name = 3;
   string priority = 4;
   string dueDate = 5;
@@ -67,7 +67,7 @@ message AddTaskResponse {
 
 message AddSubtaskRequest {
   string taskName = 1;
-  string taskId = 2;
+  int32 taskId = 2;
   string name = 3;
   string priority = 4;
 }
@@ -89,7 +89,7 @@ message GetSpacesResponse {
 }
 
 message GetTablesRequest {
-  string spaceId = 1;
+  int32 spaceId = 1;
 }
 
 message GetTablesResponse {
@@ -100,7 +100,7 @@ message GetTablesResponse {
 }
 
 message GetStatusesRequest {
-  string tableId = 1;
+  int32 tableId = 1;
 }
 
 message GetStatusesResponse {
@@ -112,7 +112,7 @@ message GetStatusesResponse {
 }
 
 message GetTasksRequest {
-  string statusId = 1;
+  int32 statusId = 1;
 }
 
 message GetTasksResponse {
@@ -126,7 +126,7 @@ message GetTasksResponse {
 }
 
 message GetSubtasksRequest {
-  string taskId = 1;
+  int32 taskId = 1;
 }
 
 message GetSubtasksResponse {
